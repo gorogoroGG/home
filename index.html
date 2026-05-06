@@ -3,186 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExNotion — Notionをもっと、身近に。</title>
-  <meta name="description" content="メモ・タスク・カレンダーをNotionに自動同期。瞬間キャプチャで、思いついた瞬間に記録できるiOSアプリです。" />
-  <meta property="og:title" content="ExNotion — Notionをもっと、身近に。" />
-  <meta property="og:description" content="メモ・タスク・カレンダーをNotionに自動同期。iOSアプリ。" />
-  <meta property="og:type" content="website" />
+  <title>gorogoro — iOSアプリ</title>
+  <meta name="description" content="gorogoroが開発するiOSアプリの一覧。ExNotion、Setlyなど。" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .dev-hero { padding: clamp(64px, 10vw, 120px) 0 clamp(40px, 6vw, 72px); }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 44px;
+    }
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--bg-panel) 96%, transparent),
+        color-mix(in srgb, var(--bg-panel-soft) 96%, transparent));
+      box-shadow: var(--shadow-soft);
+      color: var(--fg);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .app-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), transparent 38%);
+      pointer-events: none;
+    }
+    .app-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+    .app-card-icon {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px; flex-shrink: 0;
+    }
+    .app-card-icon svg { width: 38px; height: 38px; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .app-card-icon.notion { background: linear-gradient(180deg, #171717, #0a0a0a); box-shadow: 0 16px 32px rgba(17,17,17,0.22); }
+    .app-card-icon.notion svg { stroke: #ffffff; }
+    .app-card-icon.setly { background: linear-gradient(180deg, #2a0a14, #1a0309); box-shadow: 0 16px 32px rgba(220,38,80,0.22); }
+    .app-card-icon.setly svg { stroke: #ff3b6e; }
+    .app-card-badge {
+      display: inline-flex; align-items: center; height: 26px; padding: 0 12px;
+      border-radius: 999px; border: 1px solid var(--border);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-subtle); margin-bottom: 14px; width: fit-content;
+    }
+    .app-card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 10px; }
+    .app-card p { font-size: 0.96875rem; line-height: 1.7; color: var(--fg-sub); margin-bottom: 24px; flex: 1; }
+    .app-card-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .app-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 38px; padding: 0 16px; border-radius: 999px;
+      font-size: 0.875rem; font-weight: 600;
+      border: 1px solid var(--border); color: var(--fg);
+      background: color-mix(in srgb, var(--bg-panel) 78%, transparent);
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .app-card-link:hover { background: color-mix(in srgb, var(--bg-panel) 96%, transparent); transform: translateY(-1px); }
+    .app-card-link.primary { background: linear-gradient(180deg, #171717, #0b0b0b); color: #fff; border-color: transparent; }
+    .app-card-link.primary:hover { background: linear-gradient(180deg, #222, #111); }
+  </style>
 </head>
 <body>
 
-  <!-- ── Header ── -->
   <header>
     <nav>
       <a href="index.html" class="nav-logo">
         <span class="nav-logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c-2.5 0-4.5-4-4.5-9S9.5 3 12 3m0 18c2.5 0 4.5-4 4.5-9S14.5 3 12 3m-9 9a9 9 0 0 1 9-9"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
         </span>
-        ExNotion
+        gorogoro
       </a>
       <ul class="nav-links">
-        <li><a href="#features">機能</a></li>
-        <li><a href="support.html">サポート</a></li>
-        <li><a href="privacy.html">プライバシー</a></li>
+        <li><a href="support.html">ExNotion</a></li>
+        <li><a href="setly/">Setly</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ── Hero ── -->
-  <section class="hero">
-    <div class="container hero-shell">
-      <div class="hero-copy">
-        <div class="hero-badge">iOS App</div>
-        <h1>Notionをもっと、<br><span>身近に。</span></h1>
-        <p class="hero-sub">
-          メモもタスクも、もっと素早く。<br>
-          思いついた瞬間に記録して、すべてをNotionへ自動同期。
-        </p>
-        <div class="cta-group">
-          <a href="https://apps.apple.com/jp/app/exnotion/id6745064186" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store でダウンロード
-          </a>
-          <a href="#features" class="btn-secondary">機能を見る</a>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-product-card">
-          <div class="hero-product-meta">
-            <span>Instant capture</span>
-            <span>Private by design</span>
-          </div>
-          <div class="hero-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c-2.5 0-4.5-4-4.5-9S9.5 3 12 3m0 18c2.5 0 4.5-4 4.5-9S14.5 3 12 3m-9 9a9 9 0 0 1 9-9"/>
-            </svg>
-          </div>
-          <div class="hero-highlights">
-            <div class="hero-highlight">
-              <strong>メモ</strong>
-              <span>思いついた瞬間を保存</span>
-            </div>
-            <div class="hero-highlight">
-              <strong>タスク</strong>
-              <span>Notionへすぐ同期</span>
-            </div>
-            <div class="hero-highlight">
-              <strong>カレンダー</strong>
-              <span>iCloud と一覧で確認</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Features ── -->
-  <section id="features" class="section-surface">
+  <section class="dev-hero">
     <div class="container">
-      <p class="section-label">機能</p>
-      <h2 class="section-title">必要なものが、<br>すべてひとつに。</h2>
-      <p class="section-desc">
-        メモ・タスク・カレンダー。iOSとNotionをシームレスにつなぐ、
-        すべてのキャプチャ機能がこの1アプリに集約されています。
+      <div class="hero-badge">iOS Developer</div>
+      <h1 class="section-title" style="font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 18px;">
+        日常を、<br><span style="color: var(--fg-soft);">もっとスムーズに。</span>
+      </h1>
+      <p class="section-desc" style="margin-bottom: 0;">
+        シンプルで使いやすいiOSアプリを開発しています。<br>
+        あなたの毎日に、ちょっとした便利さを。
       </p>
-
-      <div class="features-grid">
-
-        <div class="feature-card">
-          <div class="feature-icon orange">⚡</div>
-          <h3>瞬間キャプチャ</h3>
-          <p>思いついた瞬間にメモ・タスクを記録。ウィジェットやオムニバーからワンタップで素早く入力できます。</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon blue">🔄</div>
-          <h3>Notionへ自動同期</h3>
-          <p>入力したものはすべて、あなたのNotionワークスペースへリアルタイムで自動保存されます。</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon indigo">📋</div>
-          <h3>タスク管理</h3>
-          <p>Notionのデータベースをベースにしたタスクリスト。カスタムフィルタで今日やることを素早く把握。</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon green">📅</div>
-          <h3>カレンダー連携</h3>
-          <p>iOSカレンダーとNotionを一画面で確認。予定の追加から管理まで、アプリを切り替えずに完結。</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon red">🤖</div>
-          <h3>AIメモチャット</h3>
-          <p>保存したメモをナレッジとして、そのまま質問。要点整理や内容確認をアプリ内で素早く行えます。</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon purple">🧠</div>
-          <h3>オンデバイスAI</h3>
-          <p>AIチャットは端末内で実行。初回のみモデルのダウンロードが必要ですが、質問内容やメモ本文は外部AIサービスへ送信しません。</p>
-        </div>
-
-      </div>
     </div>
   </section>
 
-  <!-- ── How it works ── -->
-  <section>
+  <section style="padding-top: 0;">
     <div class="container">
-      <p class="section-label">使い方</p>
-      <h2 class="section-title">シンプルな3ステップ。</h2>
+      <p class="section-label">アプリ</p>
+      <h2 class="section-title">作品一覧</h2>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="step-number">01</div>
-          <h3>Notionと接続</h3>
-          <p>既存のNotionアカウントでログインするだけ。新しいアカウントは必要ありません。</p>
+      <div class="apps-grid">
+
+        <div class="app-card">
+          <div class="app-card-icon notion">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c-2.5 0-4.5-4-4.5-9S9.5 3 12 3m0 18c2.5 0 4.5-4 4.5-9S14.5 3 12 3m-9 9a9 9 0 0 1 9-9"/></svg>
+          </div>
+          <span class="app-card-badge">Notion</span>
+          <h3>ExNotion</h3>
+          <p>メモ・タスク・カレンダーをNotionへ自動同期。思いついた瞬間を記録して、すべてをNotionで管理できるiOSコンパニオンアプリ。</p>
+          <div class="app-card-links">
+            <a href="https://apps.apple.com/jp/app/exnotion/id6745064186" class="app-card-link primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              App Store
+            </a>
+            <a href="support.html" class="app-card-link">サポート →</a>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="step-number">02</div>
-          <h3>使う機能を選択</h3>
-          <p>メモ・タスク・カレンダーなど、使いたいモジュールを選んでデータベースを紐付けます。</p>
+
+        <div class="app-card">
+          <div class="app-card-icon setly">
+            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <span class="app-card-badge">Apple Music</span>
+          <h3>Setly</h3>
+          <p>セットリストをApple Musicのプレイリストへ。曲名を貼り付けるだけで全曲を自動検索し、そのままプレイリストを作成できるiOSアプリ。</p>
+          <div class="app-card-links">
+            <a href="setly/" class="app-card-link primary">
+              詳細を見る →
+            </a>
+            <a href="setly/support.html" class="app-card-link">サポート</a>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="step-number">03</div>
-          <h3>すぐに使い始める</h3>
-          <p>セットアップ完了。あとは入力するだけで、すべてが自動的にNotionへ同期されます。</p>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ── -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <strong>ExNotion</strong>
-        <p>Notionをもっと、身近に。<br>iOSのためのNotionコンパニオンアプリ。</p>
+        <strong>gorogoro</strong>
+        <p>日常をもっとスムーズに。<br>iOSアプリを開発しています。</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <h4>アプリ</h4>
+          <h4>ExNotion</h4>
           <ul>
-            <li><a href="#features">機能</a></li>
-            <li><a href="https://apps.apple.com/jp/app/exnotion/id6745064186">App Store</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>サポート</h4>
-          <ul>
-            <li><a href="support.html">サポートページ</a></li>
-            <li><a href="support.html#faq">よくある質問</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>法的情報</h4>
-          <ul>
-            <li><a href="privacy.html">プライバシーポリシー</a></li>
+            <li><a href="support.html">サポート</a></li>
+            <li><a href="privacy.html">プライバシー</a></li>
             <li><a href="terms.html">利用規約</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Setly</h4>
+          <ul>
+            <li><a href="setly/">アプリ詳細</a></li>
+            <li><a href="setly/support.html">サポート</a></li>
+            <li><a href="setly/privacy.html">プライバシー</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>お問い合わせ</h4>
+          <ul>
+            <li><a href="mailto:watch.yugo@gmail.com">watch.yugo@gmail.com</a></li>
           </ul>
         </div>
       </div>
